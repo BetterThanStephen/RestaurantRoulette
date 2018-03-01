@@ -8,19 +8,26 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import java.util.*
+import android.widget.TextView
+
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,7 +40,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onStart()
         val currentUser = mAuth?.currentUser
         updateUI(currentUser)
-        //updateDrawerUI(currentUser)
+        //updateDrawerUI(currentUser) //Problem is null pointer exception
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -57,6 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     public fun updateUI(currentUser: FirebaseUser?){
         mUser = currentUser
 
+
         if (currentUser != null){
             logoutButton.visibility = View.VISIBLE
             loginButton.visibility = View.GONE
@@ -75,22 +84,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             textUserEMail.text = ""
             textUserID.text = ""
             imageProfile.setImageResource(R.drawable.common_google_signin_btn_text_disabled)
-        }
-    }
-
-    public fun updateDrawerUI(currentUser: FirebaseUser?){
-        mUser = currentUser
-
-        if(currentUser != null){
-            drawerUserName.text = currentUser?.displayName
-            drawerUserEMail.text = currentUser?.email
-
-
-        }
-        else{
-            drawerUserName.text = "NOT LOGGED IN"
-            drawerUserEMail.text = ""
-            imageView.setImageResource(R.drawable.ic_launcher_background)
         }
     }
 
@@ -126,6 +119,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         this.updateUI(null)
                     }
         }
+
 
         loginButton.setOnClickListener{ view ->
             doLoginStuff()
