@@ -110,6 +110,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             .build(),
                     RC_SIGN_IN)
 
+            launchActivity()
+
         }
 
         fun doLogoutStuff(){
@@ -192,4 +194,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    private fun launchActivity() {
+
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+    }
+
 }
