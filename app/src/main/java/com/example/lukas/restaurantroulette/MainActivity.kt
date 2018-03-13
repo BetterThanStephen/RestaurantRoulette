@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             .build(),
                     RC_SIGN_IN)
 
-            launchActivity()
+
 
         }
 
@@ -134,6 +134,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+            launchActivity()
         }
 
         val toggle = ActionBarDrawerToggle(
