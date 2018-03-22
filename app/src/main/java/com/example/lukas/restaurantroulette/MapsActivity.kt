@@ -53,8 +53,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             try{
                 location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             }
-            catch (e: Exception){
-
+            catch (e: Exception) {
                 Log.d("Exception", e.toString())
             }
         }
@@ -63,18 +62,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 location = locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
             }
             catch (e: Exception){
-
                 Log.d("Exception", e.toString())
             }
         }
         else{
                 Log.d("Location Denied", "Location not found")
-
         }
-
-
-
-
 
         var lat = location?.latitude
         var long = location?.longitude
@@ -96,8 +89,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         )
         mMap.addMarker(MarkerOptions().position(mapLocation).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(mapLocation))
-
-        
 
     }
 
