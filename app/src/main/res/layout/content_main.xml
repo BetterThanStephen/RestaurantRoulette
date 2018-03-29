@@ -90,4 +90,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="102dp" />
 
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="225dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="56dp"
+        android:text="TextView"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textUserID" />
+
 </android.support.constraint.ConstraintLayout>
